@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 public class Game {
     private HumanPlayer humanPlayer;
     private ComputerPlayer computerPlayer;
@@ -7,7 +9,7 @@ public class Game {
         //Construct computer player
     }
     public boolean checkForEndOfTheGame(String computerOutput){
-        return false;
+        return Objects.equals(computerOutput, "4+");
     }
 
     public void play(){
@@ -19,5 +21,14 @@ public class Game {
         //Check for the end of the game,
         //Print pluses and minuses to the screen
         //Endloop
+        computerPlayer.throwANumber();
+        while (true){
+            int guessedNumber = humanPlayer.guessANumber();
+            System.out.println("Your guess: " + guessedNumber);
+            System.out.println(computerPlayer.calculatePlusMinuses(guessedNumber));
+            if (checkForEndOfTheGame(computerPlayer.calculatePlusMinuses(guessedNumber))){
+                break;
+            }
+        }
     }
 }

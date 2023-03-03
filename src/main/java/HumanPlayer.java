@@ -1,9 +1,13 @@
+import java.util.Scanner;
+
 public class HumanPlayer extends Player{
 
-    public HumanPlayer(String name){
+    Scanner guess = new Scanner(System.in);
 
+    public HumanPlayer(String name){
+        this.name = name;
     }
     public int guessANumber(){
-        return 0;
+        return guess.nextInt();
     }
 }
